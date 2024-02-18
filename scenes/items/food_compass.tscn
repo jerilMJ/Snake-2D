@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://1sp33n8t0cwb"]
+
+[ext_resource type="Texture2D" uid="uid://cfq1ow4kp8ua3" path="res://graphics/sprites/target.png" id="1_4p8jg"]
+[ext_resource type="Script" path="res://scenes/items/food_compass.gd" id="1_yhn2t"]
+[ext_resource type="Texture2D" uid="uid://c18eudkdelhhb" path="res://graphics/sprites/food.png" id="2_dkiq5"]
+[ext_resource type="Texture2D" uid="uid://c8y3kryc2m1cd" path="res://graphics/sprites/target_bg.png" id="4_7mx32"]
+
+[node name="FoodCompass" type="Node2D"]
+script = ExtResource("1_yhn2t")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("4_7mx32")
+
+[node name="Target" type="Sprite2D" parent="."]
+texture = ExtResource("1_4p8jg")
+
+[node name="Label" type="Sprite2D" parent="."]
+texture = ExtResource("2_dkiq5")

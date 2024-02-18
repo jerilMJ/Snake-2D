@@ -1,0 +1,96 @@
+[gd_scene load_steps=6 format=3 uid="uid://cq7piw1gi2y5p"]
+
+[ext_resource type="Script" path="res://scenes/player/player.gd" id="1_homxb"]
+[ext_resource type="Texture2D" uid="uid://bvxx3nqdpqcam" path="res://graphics/sprites/snake_head.png" id="1_qwtk0"]
+[ext_resource type="Texture2D" uid="uid://cis7rtwe6bn6f" path="res://graphics/sprites/snake_tail.png" id="2_8ddp7"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l6gkg"]
+radius = 35.0
+height = 125.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xweyn"]
+size = Vector2(40, 50)
+
+[node name="Player" type="Node2D"]
+script = ExtResource("1_homxb")
+
+[node name="MidSections" type="Node2D" parent="."]
+
+[node name="PrimaryParts" type="CharacterBody2D" parent="." groups=["player_head"]]
+
+[node name="InteractArea" type="Area2D" parent="PrimaryParts"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PrimaryParts/InteractArea"]
+position = Vector2(36, 0)
+shape = SubResource("CapsuleShape2D_l6gkg")
+
+[node name="Head" type="Sprite2D" parent="PrimaryParts"]
+scale = Vector2(0.999837, 0.999837)
+texture = ExtResource("1_qwtk0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PrimaryParts"]
+position = Vector2(27, 0)
+shape = SubResource("RectangleShape2D_xweyn")
+
+[node name="Camera2D" type="Camera2D" parent="PrimaryParts"]
+
+[node name="DamageParticles" type="Node2D" parent="PrimaryParts"]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="PrimaryParts/DamageParticles"]
+position = Vector2(26, 0)
+emitting = false
+one_shot = true
+explosiveness = 0.5
+randomness = 0.6
+emission_shape = 1
+emission_sphere_radius = 26.0
+gravity = Vector2(-700, -700)
+scale_amount_min = 10.0
+scale_amount_max = 15.0
+color = Color(0.819608, 0.819608, 0, 1)
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="PrimaryParts/DamageParticles"]
+position = Vector2(26, 0)
+emitting = false
+one_shot = true
+explosiveness = 0.5
+randomness = 0.6
+emission_shape = 1
+emission_sphere_radius = 26.0
+gravity = Vector2(-700, 700)
+scale_amount_min = 10.0
+scale_amount_max = 15.0
+color = Color(0.819608, 0.819608, 0, 1)
+
+[node name="CPUParticles2D3" type="CPUParticles2D" parent="PrimaryParts/DamageParticles"]
+position = Vector2(26, 0)
+emitting = false
+one_shot = true
+explosiveness = 0.5
+randomness = 0.6
+emission_shape = 1
+emission_sphere_radius = 26.0
+gravity = Vector2(700, 700)
+scale_amount_min = 10.0
+scale_amount_max = 15.0
+color = Color(0.819608, 0.819608, 0, 1)
+
+[node name="CPUParticles2D4" type="CPUParticles2D" parent="PrimaryParts/DamageParticles"]
+position = Vector2(26, 0)
+emitting = false
+one_shot = true
+explosiveness = 0.5
+randomness = 0.6
+emission_shape = 1
+emission_sphere_radius = 26.0
+gravity = Vector2(700, -700)
+scale_amount_min = 10.0
+scale_amount_max = 15.0
+color = Color(0.819608, 0.819608, 0, 1)
+
+[node name="Tail" type="Sprite2D" parent="."]
+position = Vector2(-128, 0)
+scale = Vector2(0.999771, 0.999771)
+texture = ExtResource("2_8ddp7")
+
+[connection signal="body_entered" from="PrimaryParts/InteractArea" to="PrimaryParts" method="_on_interact_area_body_entered"]

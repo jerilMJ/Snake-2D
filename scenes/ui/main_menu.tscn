@@ -1,0 +1,75 @@
+[gd_scene load_steps=3 format=3 uid="uid://j8an5u2rm3c2"]
+
+[ext_resource type="Script" path="res://scenes/ui/main_menu.gd" id="1_2o3yq"]
+[ext_resource type="Texture2D" uid="uid://iui5ttg8comj" path="res://graphics/wallpapers/forest.png" id="1_03uul"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2o3yq")
+
+[node name="Background" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="Background"]
+layout_mode = 2
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("1_03uul")
+expand_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+layout_mode = 2
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0.188235, 0.356863, 0.752941)
+
+[node name="Buttons" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="StartGame" type="MenuButton" parent="Buttons"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 48.0
+anchor_bottom = 27.0
+offset_left = 800.0
+offset_top = 500.0
+offset_right = -800.0
+offset_bottom = -500.0
+theme_override_font_sizes/font_size = 24
+text = "Start Game"
+
+[node name="Options" type="MenuButton" parent="Buttons"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 48.0
+anchor_bottom = 27.0
+offset_left = 800.0
+offset_top = 600.0
+offset_right = -800.0
+offset_bottom = -400.0
+theme_override_font_sizes/font_size = 24
+text = "Options"
+
+[node name="Exit" type="MenuButton" parent="Buttons"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 48.0
+anchor_bottom = 27.0
+offset_left = 800.0
+offset_top = 700.0
+offset_right = -800.0
+offset_bottom = -300.0
+theme_override_font_sizes/font_size = 24
+text = "Exit"
+
+[connection signal="pressed" from="Buttons/StartGame" to="." method="_on_start_game_pressed"]
+[connection signal="pressed" from="Buttons/Exit" to="." method="_on_exit_pressed"]

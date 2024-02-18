@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://dsbsi8xbkcb8l"]
+
+[ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_0uj8y"]
+[ext_resource type="PackedScene" uid="uid://beh4acw5tn8kb" path="res://scenes/maps/grass_plains.tscn" id="1_2wl8p"]
+[ext_resource type="PackedScene" uid="uid://cq7piw1gi2y5p" path="res://scenes/player/player.tscn" id="2_08qtq"]
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_0uj8y")
+
+[node name="GrassPlains" parent="." instance=ExtResource("1_2wl8p")]
+
+[node name="Player" parent="." instance=ExtResource("2_08qtq")]
+position = Vector2(502, 244)
+
+[node name="Items" type="Node2D" parent="."]
+
+[node name="GameUI" type="CanvasLayer" parent="."]
+
+[node name="ScoreCounter" type="Label" parent="GameUI"]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 30
+text = "Score: 0"
+
+[connection signal="food_signal" from="Player" to="." method="_on_player_food_signal"]
